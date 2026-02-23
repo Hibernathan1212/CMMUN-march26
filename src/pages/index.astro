@@ -1,11 +1,27 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import "../style/global.css";
+import Layout from "../layouts/Layout.astro";
+const siteTitle = "CMMUN March 2026";
+const description = "Chiang Mai MUN Conference March 2026 ";
 ---
 
-<Layout>
-	<Welcome />
+<Layout title={siteTitle} description={description}>
+  <div
+    class="relative flex min-h-screen flex-col items-center justify-center px-6"
+  >
+    <div
+      class="pointer-events-none absolute top-1/2 left-1/2 h-150 w-150 -translate-x-1/2 -translate-y-1/2 rounded-full opacity-[0.03]"
+      style="background: radial-gradient(circle, #22d3ee 0%, transparent 70%);"
+    >
+    </div>
+
+    <div class="relative z-10 w-full max-w-xs">
+      <header
+        class="mb-16 opacity-0 animate-fade-in-up"
+        style="animation-delay: 0s;"
+      >
+        <h1 class="text-xl tracking-tight text-text">test</h1>
+      </header>
+    </div>
+  </div>
 </Layout>

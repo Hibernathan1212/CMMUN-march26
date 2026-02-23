@@ -1,23 +1,183 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
-</html>
+---
+import { cn } from "../utils/cn";
+import "../style/global.css";
+import { ClientRouter } from "astro:transitions";
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+interface Props {
+  title: string;
+  description: string;
+  classNames?: {
+    html?: string;
+    body?: string;
+    main?: string;
+    footer?: string;
+  };
+  backToLink?:
+    | false
+    | {
+        text: string;
+        href: string;
+      };
+}
+
+const defaultBackToLink: Props["backToLink"] = {
+  text: "back",
+  href: "/",
+};
+
+const {
+  title,
+  description,
+  classNames,
+  backToLink = defaultBackToLink,
+} = Astro.props;
+const isHomepage = Astro.url.pathname === "/";
+
+const links = [
+  {
+    href: "https://docs.google.com/spreadsheets/d/1Og2zGMQ8FqeI1tAkJhY50IYHMqjZcv2x8Pw-7oWoNbo/edit?gid=1727275284#gid=1727275284",
+    label: "Master Spreadsheet",
+    external: true,
+  },
+  {
+    href: "https://youtube.com/@t3dotgg",
+    label: "youtube",
+    external: true,
+  },
+  {
+    href: "https://create.t3.gg",
+    label: "create-t3-app",
+    external: true,
+  },
+  {
+    href: "/blog",
+    label: "blog",
+    external: false,
+  },
+  {
+    href: "/sponsors",
+    label: "sponsors",
+    external: false,
+  },
+];
+---
+
+<html
+  lang="en"
+  class={cn("h-full bg-void", classNames?.html)}
+  style="view-transition-name:root"
+>
+  <head>
+    <ClientRouter />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="color-scheme" content="dark" />
+    <link rel="icon" href="/favicon.svg" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    <meta name="theme-color" content="#050505" />
+  </head>
+  <body
+    class={cn(
+      "min-h-full bg-void font-sans text-text selection:bg-accent/20",
+      classNames?.body,
+    )}
+  >
+    <main class={cn("flex min-h-screen flex-col text-text", classNames?.main)}>
+      <header
+        class="fixed top-0 left-0 w-full z-50 flex justify-center animate-fade-in-up"
+        style="animation-delay: 0s;"
+      >
+        <div
+          class="flex items-center justify-between w-full max-w-4xl p-2 px-6 mt-6 bg-[#222222]/90 backdrop-blur-3xl rounded-full shadow-2xl border border-white/10"
+        >
+          <span
+            class="text-2xl font-serif text-white px-2 font-semibold animate-fade-in-up"
+          >
+            CMMUN
+          </span>
+
+          <nav
+            class="hidden md:flex items-center gap-6 text-sm font-medium text-gray-300"
+          >
+            {
+              links.map((link, i) => (
+                <a
+                  href={link.href}
+                  target={link.external ? "_blank" : undefined}
+                  rel={link.external ? "noopener noreferrer" : undefined}
+                  class="group relative items-center justify-between py-2 opacity-0 animate-fade-in-up hover:text-white transition-colors font-extralight text-lg"
+                  style={`animation-delay: ${(i + 1) * 0.05}s;`}
+                >
+                  {link.label}
+                </a>
+              ))
+            }
+          </nav>
+        </div>
+      </header>
+      <slot />
+      <footer
+        class={cn(
+          "[--space:--spacing(6)] sm:[--space:--spacing(10)]",
+          "border-t border-white/5 pt-(--space) pb-safe-offset-(--space)",
+          classNames?.footer,
+        )}
+      >
+        <div class="container mx-auto px-4 mb-10">
+          <div
+            class="w-full items-center justify-center gap-x-6 text-sm tracking-wider"
+          >
+            <div class="justify-start items-center gap-x-6 flex pt-6 pb-12">
+              <p>logo</p>
+              <h2 class="font-sans text-5xl tracking-tight font-light">
+                Chiang Mai <br />
+                Model United Nations
+              </h2>
+            </div>
+            <div class="border-white/60 border-t"></div>
+
+            <div
+              class="grid grid-cols-2 justify-center items-center gap-x-6 pt-6 pb-8"
+            >
+              <div class="flex flex-col gap-0">
+                {
+                  links.map((link, i) => (
+                    <a
+                      href={link.href}
+                      target={link.external ? "_blank" : undefined}
+                      rel={link.external ? "noopener noreferrer" : undefined}
+                      class="group relative items-center justify-between py-2 opacity-0 animate-fade-in-up"
+                      style={`animation-delay: ${(i + 1) * 0.05}s;`}
+                    >
+                      <span class="relative w-fit text-white/80 font-extralight text-md transition-colors duration-200 group-hover:text-text">
+                        {link.label}
+                        <span class="absolute -bottom-1 left-0 h-px w-0 bg-white/40 transition-all duration-300 ease-out group-hover:w-full" />
+                      </span>
+                    </a>
+                  ))
+                }
+              </div>
+              <div class="flex justify-end items-end">
+                <span
+                  class="text-right text-white/80 font-extralight leading-relaxed text-md group-hover:text-text"
+                >
+                  <br />
+                  <br />
+                  <br />
+                  Contact information: <br />
+                  @ptis.ac <br />
+                  Prem Tinsulonda International School <br />
+                  <br />
+                  <p class="text-left text-white/60 font-extralight text-sm">
+                    Copyright &copy; 2026 asd;lfkj. All Rights Reserved.
+                  </p>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </main>
+  </body>
+</html>
