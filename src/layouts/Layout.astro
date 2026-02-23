@@ -40,23 +40,23 @@ const links = [
     external: true,
   },
   {
-    href: "https://youtube.com/@t3dotgg",
-    label: "youtube",
-    external: true,
-  },
-  {
-    href: "https://create.t3.gg",
-    label: "create-t3-app",
-    external: true,
-  },
-  {
-    href: "/blog",
-    label: "blog",
+    href: "/resolutions",
+    label: "Resolutions",
     external: false,
   },
   {
-    href: "/sponsors",
-    label: "sponsors",
+    href: "/schedule",
+    label: "Schedule",
+    external: false,
+  },
+  {
+    href: "/map",
+    label: "Map",
+    external: false,
+  },
+  {
+    href: "/rop",
+    label: "RoP",
     external: false,
   },
 ];
@@ -85,20 +85,21 @@ const links = [
   >
     <main class={cn("flex min-h-screen flex-col text-text", classNames?.main)}>
       <header
-        class="fixed top-0 left-0 w-full z-50 flex justify-center animate-fade-in-up"
+        class="fixed top-0 left-0 w-full z-50 flex justify-center transition:persist"
         style="animation-delay: 0s;"
       >
         <div
           class="flex items-center justify-between w-full max-w-4xl p-2 px-6 mt-6 bg-[#222222]/90 backdrop-blur-3xl rounded-full shadow-2xl border border-white/10"
         >
-          <span
-            class="text-2xl font-serif text-white px-2 font-semibold animate-fade-in-up"
+          <a
+            href="/"
+            class="text-2xl font-serif px-2 font-extralight transition-colors hover:text-white text-gray-200"
           >
             CMMUN
-          </span>
+          </a>
 
           <nav
-            class="hidden md:flex items-center gap-6 text-sm font-medium text-gray-300"
+            class="md:flex items-center gap-6 text-sm font-medium text-gray-300"
           >
             {
               links.map((link, i) => (
@@ -106,10 +107,20 @@ const links = [
                   href={link.href}
                   target={link.external ? "_blank" : undefined}
                   rel={link.external ? "noopener noreferrer" : undefined}
-                  class="group relative items-center justify-between py-2 opacity-0 animate-fade-in-up hover:text-white transition-colors font-extralight text-lg"
-                  style={`animation-delay: ${(i + 1) * 0.05}s;`}
+                  class="flex items-center justify-between py-2 hover:text-white transition-colors font-extralight text-lg"
                 >
                   {link.label}
+                  {link.external && (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-3.5 w-3.5 ml-1"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
+                      <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
+                    </svg>
+                  )}
                 </a>
               ))
             }
@@ -150,8 +161,33 @@ const links = [
                       class="group relative items-center justify-between py-2 opacity-0 animate-fade-in-up"
                       style={`animation-delay: ${(i + 1) * 0.05}s;`}
                     >
-                      <span class="relative w-fit text-white/80 font-extralight text-md transition-colors duration-200 group-hover:text-text">
+                      <span class="relative flex items-center w-fit text-white/80 font-extralight text-md transition-colors duration-200 group-hover:text-text">
                         {link.label}
+                        {link.external ? (
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-3.5 w-3.5 ml-1"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                          >
+                            <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
+                            <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
+                          </svg>
+                        ) : (
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-3.5 w-3.5"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                              clip-rule="evenodd"
+                            />
+                          </svg>
+                        )}
+
                         <span class="absolute -bottom-1 left-0 h-px w-0 bg-white/40 transition-all duration-300 ease-out group-hover:w-full" />
                       </span>
                     </a>
@@ -164,13 +200,13 @@ const links = [
                 >
                   <br />
                   <br />
-                  <br />
                   Contact information: <br />
                   @ptis.ac <br />
+                  CMMUN MARCH 2026 <br />
                   Prem Tinsulonda International School <br />
                   <br />
                   <p class="text-left text-white/60 font-extralight text-sm">
-                    Copyright &copy; 2026 asd;lfkj. All Rights Reserved.
+                    Copyright &copy; 2026 asdlfkj. All Rights Reserved.
                   </p>
                 </span>
               </div>
