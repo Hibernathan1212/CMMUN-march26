@@ -1,0 +1,39 @@
+---
+import { Image } from "astro:assets";
+
+interface Props {
+  name: string;
+  position: string;
+  email: string;
+  imageSrc: ImageMetadata;
+}
+
+const { name, position, email, imageSrc } = Astro.props;
+---
+
+<div class="flex flex-col items-center text-center p-4">
+  <div
+    class="w-full mb-6 rounded-4xl overflow-hidden shadow-xl shadow-black/40 aspect-square"
+  >
+    <Image src={imageSrc} alt={name} class="w-full h-full object-cover" />
+  </div>
+
+  <div class="flex flex-col items-center">
+    <h3 class="text-4xl font-serif tracking-wide mb-2">
+      {name}
+      <div class="border-t-2 border-mist-500/80 mt-1 mx-auto w-3/4"></div>
+    </h3>
+
+    <p class="text-xl mb-2">{position}</p>
+
+    <a
+      href={`mailto:${email}`}
+      class="text-lg font-sans font-extralight text-white/60 group relative inline-block"
+    >
+      {email}
+      <span
+        class="absolute -bottom-1 left-0 h-px w-0 bg-white/40 transition-all duration-300 ease-out group-hover:w-full"
+      ></span>
+    </a>
+  </div>
+</div>

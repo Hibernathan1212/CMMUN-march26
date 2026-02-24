@@ -1,12 +1,57 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import SecProfile from "../components/SecProfiles.astro";
+import GAProfile from "../components/GAProfiles.astro";
+import bagel from "../assets/bagel.jpg";
 const siteTitle = "CMMUN March 2026";
 const description = "Chiang Mai MUN Conference March 2026 ";
+
+const secTeam = [
+  { name: "Sophia Muñoz", pos: "Secretariat", mail: "sophiamu@ptis.ac.th" },
+  { name: "Moe Tin", pos: "Deputy-Secretariat", mail: "moepwintt@ptis.ac.th" },
+  { name: "Aviv Levy", pos: "Deputy-Secretariat", mail: "avivl@ptis.ac.th" },
+];
+
+const GA1Team = [
+  {
+    name: "Sophia Muñoz",
+    pos: "Secretary General",
+    mail: "sophiamu@ptis.ac.th",
+  },
+  {
+    name: "Moe Tin",
+    pos: "Deputy Secretary General",
+    mail: "moepwintt@ptis.ac.th",
+  },
+  {
+    name: "Aviv Levy",
+    pos: "Deputy Secretary General",
+    mail: "avivl@ptis.ac.th",
+  },
+];
+
+const GA2Team = [
+  {
+    name: "Micah Mejudhon",
+    pos: "Secretary General",
+    mail: "micahm@ptis.ac.th",
+  },
+  {
+    name: "Aizea Ramirez",
+    pos: "Deputy Secretary General",
+    mail: "aizear@ptis.ac.th",
+  },
+  {
+    name: "Natalie O'Hare",
+    pos: "Deputy Secretary General",
+    mail: "natalieo@ptis.ac.th",
+  },
+];
 ---
 
 <Layout title={siteTitle} description={description}>
   <div
-    class="relative flex min-h-screen flex-col items-center justify-center px-6 -mb-32"
+    class="relative flex min-h-screen flex-col items-center justify-center px-6 -mb-24"
   >
     <div
       class="pointer-events-none absolute top-1/2 left-1/2 h-150 w-150 -translate-x-1/2 -translate-y-1/2 rounded-full opacity-[0.03]"
@@ -14,22 +59,109 @@ const description = "Chiang Mai MUN Conference March 2026 ";
     >
     </div>
 
-    <div class="relative z-10 w-full">
+    <div class="relative z-10 w-full h-full max-w-6xl">
       <header
-        class="mb-16 opacity-0 animate-fade-in-up"
+        class="mb-16 opacity-0 animate-fade-in-up grid grid-cols-2"
         style="animation-delay: 0s;"
       >
-        <h1
-          class="text-8xl tracking-tight text-text font-extralight text-center"
-        >
-          CMMUN March 2026
-        </h1>
+        <div>
+          <h1 class="text-8xl tracking-tight text-text font-extralight -mt-8">
+            CMMUN <br />
+            March 2026
+          </h1>
+          <p class="text-lg tracking-tight font-extralight text-gray-300">
+            Hosted by Prem International School
+          </p>
+        </div>
         <p
           class="text-lg tracking-tight font-extralight text-gray-300 text-center"
         >
-          test
+          pic
         </p>
       </header>
+    </div>
+  </div>
+  <div class="items-center justify-center border-t border-white/10 p-4 w-full">
+    <div class="container mx-auto max-w-5xl">
+      <h2
+        class="mx-auto text-8xl font-serif font-light my-12 tracking-wide text-center w-max"
+      >
+        Secretariat team
+        <div class="border-t-3 border-mist-500/80 mt-1"></div>
+      </h2>
+      {
+        secTeam.map((member, index) => (
+          <SecProfile
+            name={member.name}
+            position={member.pos}
+            email={member.mail}
+            imageSrc={bagel}
+            imageRight={index % 2 !== 0}
+          />
+        ))
+      }
+    </div>
+    <div
+      class="container mx-auto max-w-7xl border-t-3 border-white/10 mt-48 mb-16"
+    >
+    </div>
+
+    <div class="container mx-auto max-w-6xl">
+      <h2
+        class="mx-auto text-8xl font-serif font-light my-12 tracking-wide text-center w-max"
+      >
+        General Assembly 1
+        <div class="border-t-3 border-mist-500/80 mt-1"></div>
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-2 max-w-8xl mx-auto px-4">
+        {
+          GA1Team.map((member) => (
+            <GAProfile
+              name={member.name}
+              position={member.pos}
+              email={member.mail}
+              imageSrc={bagel}
+            />
+          ))
+        }
+      </div>
+    </div>
+    <div
+      class="container mx-auto max-w-7xl border-t-3 border-white/10 mt-48 mb-16"
+    >
+    </div>
+
+    <div class="container mx-auto max-w-6xl">
+      <h2
+        class="mx-auto text-4xl md:text-8xl font-serif font-light my-12 tracking-wide text-center w-max"
+      >
+        General Assembly 2
+        <div class="border-t-3 border-mist-500/80 mt-1"></div>
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-2 max-w-8xl mx-auto px-4">
+        {
+          GA2Team.map((member) => (
+            <GAProfile
+              name={member.name}
+              position={member.pos}
+              email={member.mail}
+              imageSrc={bagel}
+            />
+          ))
+        }
+      </div>
+    </div>
+    <div
+      class="container mx-auto max-w-7xl border-t-3 border-white/10 mt-48 mb-16"
+    >
+    </div>
+    <div class="container mx-auto max-w-6xl">
+      <h2
+        class="mx-auto text-8xl font-serif font-light my-12 tracking-wide text-center w-max"
+      >
+        Comitees
+        <div class="border-t-3 border-mist-500/80 mt-1"></div>
+      </h2>
     </div>
   </div>
 </Layout>
