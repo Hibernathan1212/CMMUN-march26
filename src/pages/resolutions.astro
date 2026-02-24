@@ -1,11 +1,14 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Collapsable from "../components/collapsable.astro";
 const siteTitle = "CMMUN March 2026";
 const description = "Chiang Mai MUN Conference March 2026 ";
 ---
 
 <Layout title={siteTitle} description={description}>
-  <div class="relative flex min-h-screen justify-center pt-64">
+  <div
+    class="relative flex min-h-screen flex-col items-center justify-center px-6 -mb-32"
+  >
     <div
       class="pointer-events-none absolute top-1/2 left-1/2 h-150 w-150 -translate-x-1/2 -translate-y-1/2 rounded-full opacity-[0.03]"
       style="background: radial-gradient(circle, #22d3ee 0%, transparent 70%);"
@@ -30,4 +33,5 @@ const description = "Chiang Mai MUN Conference March 2026 ";
       </header>
     </div>
   </div>
+  <Collapsable title="test"> test </Collapsable>
 </Layout>

@@ -1,12 +1,13 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Collapsable from "../components/collapsable.astro";
 const siteTitle = "CMMUN March 2026";
 const description = "Chiang Mai MUN Conference March 2026 ";
 ---
 
 <Layout title={siteTitle} description={description}>
   <div
-    class="relative flex min-h-screen flex-col items-center justify-center px-6"
+    class="relative flex min-h-screen flex-col items-center justify-center px-6 -mb-32"
   >
     <div
       class="pointer-events-none absolute top-1/2 left-1/2 h-150 w-150 -translate-x-1/2 -translate-y-1/2 rounded-full opacity-[0.03]"
@@ -14,13 +15,24 @@ const description = "Chiang Mai MUN Conference March 2026 ";
     >
     </div>
 
-    <div class="relative z-10 w-full max-w-xs">
+    <div class="relative z-10 w-full">
       <header
         class="mb-16 opacity-0 animate-fade-in-up"
         style="animation-delay: 0s;"
       >
-        <h1 class="text-xl tracking-tight text-text">test</h1>
+        <h1
+          class="text-8xl tracking-tight text-text font-extralight text-center"
+        >
+          Schedule
+        </h1>
+        <p
+          class="text-lg tracking-tight font-extralight text-gray-300 text-center"
+        >
+          test
+        </p>
       </header>
     </div>
   </div>
+  <Collapsable title="General Assembly 1"> Test </Collapsable>
+  <Collapsable title="General Assembly 2"> Test </Collapsable>
 </Layout>

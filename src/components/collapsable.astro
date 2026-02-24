@@ -1,0 +1,78 @@
+---
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<collapsible-section
+  class="block mb-16 opacity-0 translate-y-5 transition-all duration-700 ease-out data-visible:opacity-100 data-visible:translate-y-0 mx-8"
+>
+  <div class="max-w-6xl mx-auto">
+    <button
+      class="flex items-center justify-between w-full pb-6 group"
+      aria-expanded="false"
+    >
+      <div class="flex items-center">
+        <h2
+          class="text-2xl font-extralight tracking-wide group-hover:text-purple-400 transition-colors duration-300 text-left"
+        >
+          {title}
+        </h2>
+      </div>
+
+      <div
+        class="w-6 h-6 text-gray-300 group-hover:text-purple-400 transition-transform duration-300 icon-chevron"
+      >
+        <svg
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M19 9l-7 7-7-7"></path>
+        </svg>
+      </div>
+    </button>
+
+    <div class="h-px bg-linear-to-r from-white/60 via-white/60 to-transparent">
+    </div>
+
+    <div
+      class="content-wrapper h-0 overflow-hidden transition-[height] duration-300 ease-in-out"
+    >
+      <div class="pt-8 opacity-0 transition-opacity duration-500 content-inner">
+        <slot />
+      </div>
+    </div>
+  </div>
+</collapsible-section>
+
+<script>
+  class CollapsibleSection extends HTMLElement {
+    constructor() {
+      super();
+      const btn = this.querySelector("button");
+      const wrapper = this.querySelector(".content-wrapper") as HTMLElement;
+      const inner = this.querySelector(".content-inner") as HTMLElement;
+      const chevron = this.querySelector(".icon-chevron");
+
+      setTimeout(() => (this.dataset.visible = "true"), 100);
+
+      btn?.addEventListener("click", () => {
+        const isOpen = btn.getAttribute("aria-expanded") === "true";
+        btn.setAttribute("aria-expanded", !isOpen + "");
+
+        wrapper.style.height = isOpen ? "0px" : `${inner.scrollHeight + 32}px`;
+        inner.classList.toggle("opacity-0", isOpen);
+        chevron?.classList.toggle("rotate-180", !isOpen);
+      });
+    }
+  }
+  customElements.define("collapsible-section", CollapsibleSection);
+</script>
