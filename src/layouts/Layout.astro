@@ -2,6 +2,7 @@
 import { cn } from "../utils/cn";
 import "../style/global.css";
 import { ClientRouter } from "astro:transitions";
+import PostHog from "../components/posthog.astro";
 
 interface Props {
   title: string;
@@ -76,6 +77,7 @@ const links = [
     <meta name="description" content={description} />
     <title>{title}</title>
     <meta name="theme-color" content="#050505" />
+    <PostHog />
   </head>
   <body
     class={cn(
@@ -149,7 +151,7 @@ const links = [
             <div class="border-white/60 border-t"></div>
 
             <div
-              class="grid grid-cols-2 justify-center items-center gap-x-6 pt-6 pb-8"
+              class="grid grid-cols-2 justify-center items-center gap-x-6 pt-6 pb-4"
             >
               <div class="flex flex-col gap-0">
                 {
