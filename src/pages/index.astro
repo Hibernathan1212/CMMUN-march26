@@ -2,7 +2,17 @@
 import Layout from "../layouts/Layout.astro";
 import SecProfile from "../components/SecProfiles.astro";
 import GAProfile from "../components/GAProfiles.astro";
+import CommitteeSection from "../components/CommitteeSection.astro";
+import type { Committee } from "../components/CommitteeSection.astro";
 import bagel from "../assets/bagel.jpg";
+import unsc from "../assets/committees/unsc.png";
+import unhrc from "../assets/committees/unhrc.png";
+import ecosoc from "../assets/committees/ecosoc.png";
+import disec from "../assets/committees/disec.png";
+import unodc from "../assets/committees/unodc.png";
+import unicef from "../assets/committees/unicef.png";
+import icj from "../assets/committees/icj.png";
+import { Image } from "astro:assets";
 const siteTitle = "CMMUN March 2026";
 const description = "Chiang Mai MUN Conference March 2026 ";
 
@@ -47,6 +57,67 @@ const GA2Team = [
     mail: "natalieo@ptis.ac.th",
   },
 ];
+
+const GA1Committees: Committee[] = [
+  {
+    id: "1",
+    title: "UNSC",
+    subHeading: "The United Nations Security Council",
+    photo: unsc,
+    description:
+      'Evaluating the Implications of "Operation Absolute Resolve" and the Future of Venezuelan Governance ',
+  },
+  {
+    id: "2",
+    title: "UNHRC",
+    subHeading: "The United Nations Human Rights Council",
+    photo: unhrc,
+    description:
+      "Evaluating the Role of Religion in the Limitation of Universal Human Rights",
+  },
+  {
+    id: "3",
+    title: "ECOSOC",
+    subHeading: "The Economic and Social Council",
+    photo: ecosoc,
+    description: "Combating the “Resource Curse” in Developing States",
+  },
+];
+
+const GA2Committees: Committee[] = [
+  {
+    id: "1",
+    title: "DISEC",
+    subHeading: "Disarmament and International Security Committee",
+    photo: disec,
+    description:
+      "Addressing the Militarization of Biotechnology and the Threat of Synthetic Bioweapons",
+  },
+  {
+    id: "2",
+    title: "UNODC",
+    subHeading: "United Nations Office on Drugs and Crime",
+    photo: unodc,
+    description: "Combating the “Resource Curse” in Developing States",
+  },
+  {
+    id: "3",
+    title: "UNICEF",
+    subHeading: "United Nations International Children's Emergency Fund ",
+    photo: unicef,
+    description:
+      'Evaluating the Implications of "Operation Absolute Resolve" and the Future of Venezuelan Governance ',
+  },
+];
+
+const ICJCommittee: Committee = {
+  id: "1",
+  title: "ICJ",
+  subHeading: "International Court of Justice",
+  photo: icj,
+  description:
+    "Oil Platforms Case 90 (Islamic Republic of Iran v. United States of America)",
+};
 ---
 
 <Layout title={siteTitle} description={description}>
@@ -82,7 +153,7 @@ const GA2Team = [
     </div>
   </div>
   <div class="items-center justify-center border-t border-white/10 p-4 w-full">
-    <div class="container mx-auto max-w-5xl">
+    <div class="container mx-auto max-w-6xl">
       <h2
         class="mx-auto text-8xl font-serif font-light my-12 tracking-wide text-center w-max"
       >
@@ -101,12 +172,9 @@ const GA2Team = [
         ))
       }
     </div>
-    <div
-      class="container mx-auto max-w-7xl border-t-3 border-white/10 mt-48 mb-16"
-    >
-    </div>
+    <div class="container mx-auto border-t-3 border-white/10 mt-48 mb-8"></div>
 
-    <div class="container mx-auto max-w-6xl">
+    <div class="container mx-auto max-w-8xl">
       <h2
         class="mx-auto text-8xl font-serif font-light my-12 tracking-wide text-center w-max"
       >
@@ -126,12 +194,9 @@ const GA2Team = [
         }
       </div>
     </div>
-    <div
-      class="container mx-auto max-w-7xl border-t-3 border-white/10 mt-48 mb-16"
-    >
-    </div>
+    <div class="container mx-auto border-t-3 border-white/10 mt-48 mb-16"></div>
 
-    <div class="container mx-auto max-w-6xl">
+    <div class="container mx-auto max-w-8xl">
       <h2
         class="mx-auto text-4xl md:text-8xl font-serif font-light my-12 tracking-wide text-center w-max"
       >
@@ -151,17 +216,102 @@ const GA2Team = [
         }
       </div>
     </div>
-    <div
-      class="container mx-auto max-w-7xl border-t-3 border-white/10 mt-48 mb-16"
-    >
-    </div>
+    <div class="container mx-auto border-t-3 border-white/10 mt-48 mb-16"></div>
     <div class="container mx-auto max-w-6xl">
-      <h2
+      <h1
         class="mx-auto text-8xl font-serif font-light my-12 tracking-wide text-center w-max"
       >
-        Comitees
+        Committees
+        <div class="border-t-3 border-mist-500/80 mt-1"></div>
+      </h1>
+      <h2
+        class="mx-auto text-5xl font-serif font-light mt-12 tracking-wide text-center w-max"
+      >
+        General Assembly 1
         <div class="border-t-3 border-mist-500/80 mt-1"></div>
       </h2>
+      <CommitteeSection committees={GA1Committees} />
+
+      <div class="container mx-auto border-t-3 border-white/10 mb-24 mt-8">
+      </div>
+      <h2
+        class="mx-auto text-5xl font-serif font-light mt-12 tracking-wide text-center w-max"
+      >
+        General Assembly 2
+        <div class="border-t-3 border-mist-500/80 mt-1"></div>
+      </h2>
+      <CommitteeSection committees={GA2Committees} />
+      <div class="container mx-auto border-t-3 border-white/10 mb-24 mt-8">
+      </div>
+      <h2
+        class="mx-auto text-5xl font-serif font-light mt-12 tracking-wide text-center w-max"
+      >
+        ICJ
+        <div class="border-t-3 border-mist-500/80 mt-1"></div>
+      </h2>
+
+      <div
+        class="profile-tabs-wrapper max-w-5xl mx-auto p-6 mb-12"
+        data-component="profile-tabs"
+      >
+        <div class="grid grid-cols-1 mb-12">
+          <div
+            class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 items-center [grid-area:1/1]"
+          >
+            <div class="col-span-1 aspect-square">
+              <Image
+                src={ICJCommittee.photo}
+                alt={ICJCommittee.title}
+                class="w-full h-full object-contain"
+              />
+            </div>
+            <div class="col-span-2">
+              <h2 class="text-4xl md:text-6xl font-serif mb-2">
+                {ICJCommittee.title}
+              </h2>
+              <h4
+                class="text-xl md:text-2xl text-mist-400 font-sans tracking-widest uppercase mb-6"
+              >
+                {ICJCommittee.subHeading}
+              </h4>
+              <p
+                class="text-lg md:text-xl leading-relaxed text-white/80 font-light italic"
+              >
+                {ICJCommittee.description}
+              </p>
+              <a
+                href="https://docs.google.com/document/d/1aVXp6nIGTKQANGBsJUva6720eLMzuMxSI8lUUnpPhGo/edit?tab=t.0"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex group items-center opacity-0 animate-fade-in-up py-4 w-max"
+                style={`animation-delay: 0.05s;`}
+              >
+                <span
+                  class="relative flex items-center text-lg md:text-xl text-white/60 hover:text-white transition-colors duration-200 group-hover:text-text w-max"
+                >
+                  RoP for ICJ
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-4.5 w-4.5 ml-1"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"
+                    ></path>
+                    <path
+                      d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"
+                    ></path>
+                  </svg>
+                  <span
+                    class="absolute bottom-0.5 left-0 h-px w-0 bg-white/40 transition-all duration-300 ease-out group-hover:w-full"
+                  ></span>
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </Layout>

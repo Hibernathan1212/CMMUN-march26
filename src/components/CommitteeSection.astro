@@ -1,0 +1,187 @@
+---
+import { Image } from "astro:assets";
+
+export interface Committee {
+  id: string;
+  title: string;
+  photo: ImageMetadata;
+  subHeading: string;
+  description: string;
+}
+
+interface Props {
+  committees: Committee[];
+  id?: string;
+}
+
+const { committees, id = "committee-selection" } = Astro.props;
+---
+
+<div
+  class="profile-tabs-wrapper max-w-5xl mx-auto p-6 mb-12"
+  data-component="profile-tabs"
+>
+  <!-- Tab Navigation -->
+  <div
+    class="relative flex border-b border-white/10 mb-12 justify-center gap-4 md:gap-8 overflow-x-auto no-scrollbar"
+  >
+    {
+      committees.map((p, index) => (
+        <button
+          class="profile-tab py-4 text-xl md:text-2xl font-serif transition-colors duration-300 text-white/40 hover:text-white/70 whitespace-nowrap"
+          data-profile-id={`${id}-${p.id}`}
+        >
+          {p.title}
+        </button>
+      ))
+    }
+    <div
+      class="tab-underline absolute bottom-0 h-0.5 bg-mist-500 transition-all duration-300 ease-in-out"
+    >
+    </div>
+  </div>
+
+  <!-- Content Area -->
+  <div class="grid grid-cols-1 mb-12">
+    {
+      committees.map((p, index) => (
+        <div
+          id={`${id}-${p.id}`}
+          class="profile-content grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 items-center transition-all duration-500 [grid-area:1/1] opacity-0 pointer-events-none"
+        >
+          <div class="col-span-1 aspect-square">
+            <Image
+              src={p.photo}
+              alt={p.title}
+              class="w-full h-full object-contain"
+            />
+          </div>
+          <div class="col-span-2">
+            <h2 class="text-4xl md:text-6xl font-serif mb-2">{p.title}</h2>
+            <h4 class="text-xl md:text-2xl text-mist-400 font-sans tracking-widest uppercase mb-6">
+              {p.subHeading}
+            </h4>
+            <p class="text-lg md:text-xl leading-relaxed text-white/80 font-light italic">
+              {p.description}
+            </p>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+
+  <!-- Arrow Navigation -->
+  <div class="flex justify-center gap-12">
+    <button
+      class="prev-btn group flex items-center gap-2 text-white/60 hover:text-white transition-colors"
+    >
+      <span class="text-3xl transition-transform group-hover:-translate-x-2"
+        >←</span
+      >
+      <span class="uppercase tracking-widest text-xs md:text-sm">Previous</span>
+    </button>
+    <button
+      class="next-btn group flex items-center gap-2 text-white/60 hover:text-white transition-colors"
+    >
+      <span class="uppercase tracking-widest text-xs md:text-sm">Next</span>
+      <span class="text-3xl transition-transform group-hover:translate-x-2"
+        >→</span
+      >
+    </button>
+  </div>
+</div>
+
+<style>
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+</style>
+
+<script>
+  function initProfileTabs() {
+    // Select all instances of the component
+    const containers = document.querySelectorAll(
+      '[data-component="profile-tabs"]',
+    );
+
+    containers.forEach((container) => {
+      const tabs = container.querySelectorAll(
+        ".profile-tab",
+      ) as NodeListOf<HTMLElement>;
+      const contents = container.querySelectorAll(".profile-content");
+      const underline = container.querySelector(
+        ".tab-underline",
+      ) as HTMLElement;
+      const prevBtn = container.querySelector(".prev-btn");
+      const nextBtn = container.querySelector(".next-btn");
+
+      let currentIndex = 0;
+
+      function updateUI(index: number) {
+        currentIndex = index;
+        const activeTab = tabs[currentIndex];
+        const targetId = activeTab.dataset.profileId;
+
+        // Update Tabs
+        tabs.forEach((t) => {
+          t.classList.add("text-white/40");
+          t.classList.remove("text-white");
+        });
+        activeTab.classList.remove("text-white/40");
+        activeTab.classList.add("text-white");
+
+        // Update Underline
+        if (underline) {
+          underline.style.left = `${activeTab.offsetLeft}px`;
+          underline.style.width = `${activeTab.offsetWidth}px`;
+        }
+
+        // Update Content
+        contents.forEach((content) => {
+          if (content.id === targetId) {
+            content.classList.remove(
+              "opacity-0",
+              "translate-y-4",
+              "pointer-events-none",
+            );
+            content.classList.add("opacity-100", "translate-y-0", "z-10");
+          } else {
+            content.classList.add(
+              "opacity-0",
+              "translate-y-4",
+              "pointer-events-none",
+            );
+            content.classList.remove("opacity-100", "translate-y-0", "z-10");
+          }
+        });
+      }
+
+      // Events
+      tabs.forEach((tab, i) =>
+        tab.addEventListener("click", () => updateUI(i)),
+      );
+
+      prevBtn?.addEventListener("click", () => {
+        updateUI((currentIndex - 1 + tabs.length) % tabs.length);
+      });
+
+      nextBtn?.addEventListener("click", () => {
+        updateUI((currentIndex + 1) % tabs.length);
+      });
+
+      // Init first tab for THIS container
+      if (tabs.length > 0) updateUI(0);
+
+      // Handle window resize to keep underline in sync
+      window.addEventListener("resize", () => updateUI(currentIndex));
+    });
+  }
+
+  // Initialize
+  initProfileTabs();
+  document.addEventListener("astro:after-swap", initProfileTabs);
+</script>

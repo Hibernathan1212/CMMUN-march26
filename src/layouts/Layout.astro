@@ -58,7 +58,7 @@ const links = [
   {
     href: "/Rules of Procedure - March CMMUN 2026.pdf",
     label: "RoP",
-    external: false,
+    external: true,
   },
 ];
 ---
@@ -202,9 +202,26 @@ const links = [
                 >
                   <br />
                   <br />
-                  Contact information: <br />
-                  @ptis.ac <br />
-                  CMMUN MARCH 2026 <br />
+                  <a
+                    href={`mailto:sophiamu@ptis.ac.th`}
+                    class="w-max group relative"
+                  >
+                    sophiamu@ptis.ac
+                    <span
+                      class="absolute -bottom-1 left-0 h-px w-0 bg-white/40 transition-all duration-300 ease-out group-hover:w-full"
+                    ></span>
+                  </a>
+                  <br />
+                  <a
+                    href={`mailto:moepwintt@ptis.ac.th`}
+                    class="w-max group relative"
+                  >
+                    moepwintt@ptis.ac.th
+                    <span
+                      class="absolute -bottom-1 left-0 h-px w-0 bg-white/40 transition-all duration-300 ease-out group-hover:w-full"
+                    ></span>
+                  </a>
+                  <br />CMMUN MARCH 2026 <br />
                   Prem Tinsulonda International School <br />
                   <br />
                   <p class="text-left text-white/50 font-extralight text-sm">
