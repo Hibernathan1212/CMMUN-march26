@@ -1,0 +1,41 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const siteTitle = "CMMUN March 2026";
+const description = "Chiang Mai MUN Conference March 2026 ";
+---
+
+<Layout title={siteTitle} description={description}>
+  <div class="flex min-h-screen flex-col items-center justify-center px-6">
+    <div class="text-center">
+      <h1
+        class="text-8xl font-light tracking-tighter text-text opacity-0 animate-fade-in-up"
+        style="animation-delay: 0s;"
+      >
+        404
+      </h1>
+      <p
+        class="mt-4 text-3xl tracking-tighter text-subtle animate-fade-in-up font-extralight"
+      >
+        page doesn't exist
+      </p>
+      <p
+        class="mt-16 text-sm tracking-wider text-subtle opacity-0 animate-fade-in-up"
+        style="animation-delay: 0.1s;"
+      >
+        nothing here
+      </p>
+      <a
+        href="/"
+        class="mt-8 inline-block text-subtle opacity-0 transition-colors duration-200 animate-fade-in-up group hover:text-text"
+        style="animation-delay: 0.2s;"
+      >
+        go back
+
+        <span
+          class="absolute -bottom-1 left-0 h-px w-0 bg-white/40 transition-all duration-300 ease-out group-hover:w-full"
+        ></span>
+      </a>
+    </div>
+  </div>
+</Layout>
