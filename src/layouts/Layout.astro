@@ -4,6 +4,9 @@ import "../style/global.css";
 import { ClientRouter } from "astro:transitions";
 import PostHog from "../components/posthog.astro";
 
+import logo from "../assets/logo.png";
+import { Image } from "astro:assets";
+
 interface Props {
   title: string;
   description: string;
@@ -178,9 +181,15 @@ const links = [
             class="w-full items-center justify-center gap-x-6 text-sm tracking-wider"
           >
             <div
-              class="justify-start items-center gap-x-6 flex pt-6 pb-6 md:pb-12"
+              class="justify-start items-center gap-x-2 md:gap-x-6 flex pb-6 md:pb-12"
             >
-              <p>logo</p>
+              <!-- <p>logo</p> -->
+              <Image
+                src={logo}
+                alt="logo"
+                fit="fill"
+                class="object-cover w-36"
+              />
               <h2
                 class="font-sans text-3xl md:text-5xl tracking-tight font-light"
               >
