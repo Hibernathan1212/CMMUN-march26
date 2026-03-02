@@ -4,7 +4,15 @@ import SecProfile from "../components/SecProfiles.astro";
 import GAProfile from "../components/GAProfiles.astro";
 import CommitteeSection from "../components/CommitteeSection.astro";
 import type { Committee } from "../components/CommitteeSection.astro";
+
+import { Image } from "astro:assets";
+
 import bagel from "../assets/bagel.jpg";
+
+import sophia from "../assets/sophia.png";
+import aviv from "../assets/aviv.png";
+import micah from "../assets/micah.png";
+
 import unsc from "../assets/committees/unsc.png";
 import unhrc from "../assets/committees/unhrc.png";
 import ecosoc from "../assets/committees/ecosoc.png";
@@ -12,14 +20,29 @@ import disec from "../assets/committees/disec.png";
 import unodc from "../assets/committees/unodc.png";
 import unicef from "../assets/committees/unicef.png";
 import icj from "../assets/committees/icj.png";
-import { Image } from "astro:assets";
+
 const siteTitle = "CMMUN March 2026";
 const description = "Chiang Mai MUN Conference March 2026 ";
 
 const secTeam = [
-  { name: "Sophia Muñoz", pos: "Secretariat", mail: "sophiamu@ptis.ac.th" },
-  { name: "Moe Tin", pos: "Deputy-Secretariat", mail: "moepwintt@ptis.ac.th" },
-  { name: "Aviv Levy", pos: "Deputy-Secretariat", mail: "avivl@ptis.ac.th" },
+  {
+    name: "Sophia Muñoz",
+    pos: "Secretariat",
+    mail: "sophiamu@ptis.ac.th",
+    image: sophia,
+  },
+  {
+    name: "Moe Tin",
+    pos: "Deputy-Secretariat",
+    mail: "moepwintt@ptis.ac.th",
+    image: bagel,
+  },
+  {
+    name: "Aviv Levy",
+    pos: "Deputy-Secretariat",
+    mail: "avivl@ptis.ac.th",
+    image: aviv,
+  },
 ];
 
 const GA1Team = [
@@ -27,16 +50,19 @@ const GA1Team = [
     name: "Sophia Muñoz",
     pos: "Secretary General",
     mail: "sophiamu@ptis.ac.th",
+    image: sophia,
   },
   {
     name: "Moe Tin",
     pos: "Deputy Secretary General",
     mail: "moepwintt@ptis.ac.th",
+    image: bagel,
   },
   {
     name: "Aviv Levy",
     pos: "Deputy Secretary General",
     mail: "avivl@ptis.ac.th",
+    image: aviv,
   },
 ];
 
@@ -45,16 +71,19 @@ const GA2Team = [
     name: "Micah Mejudhon",
     pos: "Secretary General",
     mail: "micahm@ptis.ac.th",
+    image: micah,
   },
   {
     name: "Aizea Ramirez",
     pos: "Deputy Secretary General",
     mail: "aizear@ptis.ac.th",
+    image: bagel,
   },
   {
     name: "Natalie O'Hare",
     pos: "Deputy Secretary General",
     mail: "natalieo@ptis.ac.th",
+    image: bagel,
   },
 ];
 
@@ -166,7 +195,7 @@ const ICJCommittee: Committee = {
             name={member.name}
             position={member.pos}
             email={member.mail}
-            imageSrc={bagel}
+            imageSrc={member.image}
             imageRight={index % 2 !== 0}
           />
         ))
@@ -191,7 +220,7 @@ const ICJCommittee: Committee = {
               name={member.name}
               position={member.pos}
               email={member.mail}
-              imageSrc={bagel}
+              imageSrc={member.image}
             />
           ))
         }
@@ -216,7 +245,7 @@ const ICJCommittee: Committee = {
               name={member.name}
               position={member.pos}
               email={member.mail}
-              imageSrc={bagel}
+              imageSrc={member.image}
             />
           ))
         }

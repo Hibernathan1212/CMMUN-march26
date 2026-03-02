@@ -15,11 +15,11 @@ const { name, position, email, imageSrc, imageRight = false } = Astro.props;
 <div class="grid grid-cols-3 justify-center items-center py-4">
   <div
     class:list={[
-      "col-span-1 rounded-4xl overflow-hidden shadow-xl shadow-black/40",
+      "col-span-1 rounded-4xl overflow-hidden shadow-lg shadow-black/40 aspect-square",
       { "order-last": imageRight },
     ]}
   >
-    <Image src={imageSrc} alt={name} width={imageSrc.width} />
+    <Image src={imageSrc} alt={name} class="w-full h-full object-cover" />
   </div>
 
   <div
