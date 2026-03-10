@@ -1,0 +1,68 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Collapsable from "../components/collapsable.astro";
+const siteTitle = "CMMUN March 2026";
+const description = "Chiang Mai MUN Conference March 2026 ";
+import unsc from "../assets/committees/unsc.png";
+import unhrc from "../assets/committees/unhrc.png";
+import ecosoc from "../assets/committees/ecosoc.png";
+import disec from "../assets/committees/disec.png";
+import unodc from "../assets/committees/unodc.png";
+import unicef from "../assets/committees/unicef.png";
+import icj from "../assets/committees/icj.png";
+import Committee from "../components/CommitteeRes.astro";
+---
+
+<Layout title={siteTitle} description={description}>
+  <div
+    class="relative flex min-h-screen flex-col items-center justify-center px-6 -mb-32"
+  >
+    <div
+      class="pointer-events-none absolute top-1/2 left-1/2 h-100 w-100 -translate-x-1/2 -translate-y-1/2 rounded-full opacity-[0.03]"
+      style="background: radial-gradient(circle, #22d3ee 0%, transparent 70%);"
+    >
+    </div>
+
+    <div class="relative z-10 w-full">
+      <header
+        class="mb-16 opacity-0 animate-fade-in-up"
+        style="animation-delay: 0s;"
+      >
+        <h1
+          class="text-7xl md:text-8xl tracking-tight text-text font-extralight text-center"
+        >
+          Resolutions
+        </h1>
+        <!-- <p -->
+        <!--   class="text-lg tracking-tight font-extralight text-gray-300 text-center" -->
+        <!-- > -->
+        <!--   test -->
+        <!-- </p> -->
+      </header>
+    </div>
+  </div>
+
+  <div class="border-t border-white/10 px-0 md:px-4 w-full pt-18">
+    <Collapsable title="General Assembly 1">
+      <div class="grid grid-cols-1 md:grid-cols-3 [grid-area:1/1]">
+        <Committee name="UNSC" imageSrc={unsc} link="" />
+        <Committee name="UNHRC" imageSrc={unhrc} link="" />
+        <Committee name="ECOSOC" imageSrc={ecosoc} link="" />
+      </div>
+    </Collapsable>
+    <Collapsable title="General Assembly 2">
+      <div class="grid grid-cols-1 md:grid-cols-3">
+        <Committee name="DISEC" imageSrc={disec} link="" />
+        <Committee name="UNODC" imageSrc={unodc} link="" />
+        <Committee name="UNICEF" imageSrc={unicef} link="" />
+      </div>
+    </Collapsable>
+    <Collapsable title="International Court of Justice">
+      <div class="grid grid-cols-1 md:grid-cols-3">
+        <div class="col-start-2">
+          <Committee name="ICJ" imageSrc={icj} link="" />
+        </div>
+      </div>
+    </Collapsable>
+  </div>
+</Layout>

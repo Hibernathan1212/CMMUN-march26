@@ -1,0 +1,92 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import map from "../assets/map.png";
+const siteTitle = "CMMUN March 2026";
+const description = "Chiang Mai MUN Conference March 2026 ";
+
+const committees = [
+  { name: "UNSC", room: "SS24" },
+  { name: "UNHRC", room: "Auditorium" },
+  { name: "ECOSOC", room: "SS23" },
+  { name: "DISEC", room: "Library" },
+  { name: "UNODC", room: "SS21" },
+  { name: "UNICEF", room: "Undercroft" },
+  { name: "ICJ", room: "SS39" },
+];
+---
+
+<Layout title={siteTitle} description={description}>
+  <div
+    class="relative flex min-h-screen flex-col items-center justify-center px-6 -mb-32"
+  >
+    <div
+      class="pointer-events-none absolute top-1/2 left-1/2 h-100 w-100 -translate-x-1/2 -translate-y-1/2 rounded-full opacity-[0.03]"
+      style="background: radial-gradient(circle, #22d3ee 0%, transparent 70%);"
+    >
+    </div>
+    <div class="relative z-10 w-full">
+      <header
+        class="mb-16 opacity-0 animate-fade-in-up"
+        style="animation-delay: 0s;"
+      >
+        <h1
+          class="text-7xl md:text-8xl tracking-tight text-text font-extralight text-center"
+        >
+          Map
+        </h1>
+      </header>
+    </div>
+  </div>
+
+  <div class="border-t border-white/10 px-0 md:px-4 w-full pt-12">
+    <h2
+      class="mx-auto text-2xl md:text-6xl font-serif font-light my-12 tracking-wide text-center w-max"
+    >
+      Map of Prem Campus
+      <div class="border-t-3 border-white/20 mt-1"></div>
+    </h2>
+
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 max-w-6xl mx-auto gap-8 items-start px-6 pb-24"
+    >
+      <div class="w-full">
+        <a href="map.png">
+          <Image
+            src={map}
+            alt="map"
+            class="w-full h-auto rounded-3xl border border-white/10"
+          />
+        </a>
+      </div>
+
+      <div class="w-full max-w-md mx-auto pt-6">
+        <div class="flex justify-between pb-4 border-b border-white/20">
+          <span
+            class="text-xs uppercase tracking-[0.2em] text-white/40 font-medium"
+            >Committee</span
+          >
+          <span
+            class="text-xs uppercase tracking-[0.2em] text-white/40 font-medium"
+            >Location</span
+          >
+        </div>
+
+        <ul class="divide-y divide-white/5">
+          {
+            committees.map((c) => (
+              <li class="flex justify-between items-center py-4 pt-5 group transition-colors duration-300">
+                <span class="text-lg md:text-xl font-light text-gray-200 group-hover:text-white transition-colors">
+                  {c.name}
+                </span>
+                <span class="text-md md:text-lg font-extralight italic text-gray-400 group-hover:text-white transition-colors">
+                  {c.room}
+                </span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+</Layout>
