@@ -38,6 +38,11 @@ const isHomepage = Astro.url.pathname === "/";
 
 const links = [
   {
+    href: "/about",
+    label: "About",
+    external: false,
+  },
+  {
     href: "https://docs.google.com/spreadsheets/d/1Og2zGMQ8FqeI1tAkJhY50IYHMqjZcv2x8Pw-7oWoNbo/edit?gid=1727275284#gid=1727275284",
     label: "Master Spreadsheet",
     external: true,
@@ -100,7 +105,7 @@ const links = [
 
         <div
           id="header-container"
-          class="flex items-center justify-between w-full max-w-4xl p-2 px-6 mt-6 bg-[#222222]/90 backdrop-blur-md rounded-full shadow-2xl border border-white/10 mx-4 relative z-50 transition-all duration-500"
+          class="flex items-center justify-between w-full max-w-5xl p-2 px-6 mt-6 bg-[#222222]/90 backdrop-blur-md rounded-full shadow-2xl border border-white/10 mx-4 relative z-50 transition-all duration-500"
         >
           <a
             href="/"

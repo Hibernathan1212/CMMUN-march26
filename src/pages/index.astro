@@ -7,149 +7,10 @@ import type { Committee } from "../components/CommitteeSection.astro";
 
 import { Image } from "astro:assets";
 
-import bagel from "../assets/bagel.jpg";
-
-import sophia from "../assets/sophia.png";
-import moe from "../assets/moe.png";
-import aviv from "../assets/aviv.png";
-import micah from "../assets/micah.png";
-import aizea from "../assets/aizea.png";
-import edem from "../assets/edem.png";
-
-import unsc from "../assets/committees/unsc.png";
-import unhrc from "../assets/committees/unhrc.png";
-import ecosoc from "../assets/committees/ecosoc.png";
-import disec from "../assets/committees/disec.png";
-import unodc from "../assets/committees/unodc.png";
-import unicef from "../assets/committees/unicef.png";
-import icj from "../assets/committees/icj.png";
-
 const siteTitle = "CMMUN March 2026";
 const description = "Chiang Mai MUN Conference March 2026 ";
-
-const secTeam = [
-  {
-    name: "Sophia Muñoz",
-    pos: "Secretariat",
-    mail: "sophiamu@ptis.ac.th",
-    image: sophia,
-  },
-  {
-    name: "Moe Tin",
-    pos: "Deputy-Secretariat",
-    mail: "moepwintt@ptis.ac.th",
-    image: moe,
-  },
-  {
-    name: "Aviv Levy",
-    pos: "Deputy-Secretariat",
-    mail: "avivl@ptis.ac.th",
-    image: aviv,
-  },
-];
-
-const GA1Team = [
-  {
-    name: "Sophia Muñoz",
-    pos: "Secretary General",
-    mail: "sophiamu@ptis.ac.th",
-    image: sophia,
-  },
-  {
-    name: "Moe Tin",
-    pos: "Deputy Secretary General",
-    mail: "moepwintt@ptis.ac.th",
-    image: moe,
-  },
-  {
-    name: "Aviv Levy",
-    pos: "Deputy Secretary General",
-    mail: "avivl@ptis.ac.th",
-    image: aviv,
-  },
-];
-
-const GA2Team = [
-  {
-    name: "Micah Mejudhon",
-    pos: "Secretary General",
-    mail: "micahm@ptis.ac.th",
-    image: micah,
-  },
-  {
-    name: "Aizea Ramirez",
-    pos: "Deputy Secretary General",
-    mail: "aizear@ptis.ac.th",
-    image: aizea,
-  },
-  {
-    name: "Edem James Threlfall Kwashie",
-    pos: "Parlimentary Ombudsman",
-    mail: "edemk@ptis.ac.th",
-    image: edem,
-  },
-];
-
-const GA1Committees: Committee[] = [
-  {
-    id: "1",
-    title: "UNSC",
-    subHeading: "The United Nations Security Council",
-    photo: unsc,
-    description:
-      'Evaluating the Implications of "Operation Absolute Resolve" and the Future of Venezuelan Governance ',
-  },
-  {
-    id: "2",
-    title: "UNHRC",
-    subHeading: "The United Nations Human Rights Council",
-    photo: unhrc,
-    description:
-      "Evaluating the Role of Religion in the Limitation of Universal Human Rights",
-  },
-  {
-    id: "3",
-    title: "ECOSOC",
-    subHeading: "The Economic and Social Council",
-    photo: ecosoc,
-    description: "Combating the “Resource Curse” in Developing States",
-  },
-];
-
-const GA2Committees: Committee[] = [
-  {
-    id: "1",
-    title: "DISEC",
-    subHeading: "Disarmament and International Security Committee",
-    photo: disec,
-    description:
-      "Addressing the Militarization of Biotechnology and the Threat of Synthetic Bioweapons",
-  },
-  {
-    id: "2",
-    title: "UNODC",
-    subHeading: "United Nations Office on Drugs and Crime",
-    photo: unodc,
-    description: "Combating the “Resource Curse” in Developing States",
-  },
-  {
-    id: "3",
-    title: "UNICEF",
-    subHeading: "United Nations International Children's Emergency Fund ",
-    photo: unicef,
-    description:
-      "Protecting Children's Right to Family Unity During Immigration Enforcement Operations",
-  },
-];
-
-const ICJCommittee: Committee = {
-  id: "1",
-  title: "ICJ",
-  subHeading: "International Court of Justice",
-  photo: icj,
-  description:
-    "Oil Platforms Case 90 (Islamic Republic of Iran v. United States of America)",
-};
+import girl from "../assets/girl.avif";
+import paris from "../assets/paris.avif";
 ---
 
 <Layout title={siteTitle} description={description}>
@@ -176,183 +37,86 @@ const ICJCommittee: Committee = {
             Hosted by Prem International School
           </p>
         </div>
-        <!-- <p -->
-        <!--   class="text-lg tracking-tight font-extralight text-gray-300 text-center" -->
-        <!-- > -->
-        <!--   pic -->
-        <!-- </p> -->
       </header>
     </div>
   </div>
   <div class="items-center justify-center border-t border-white/10 p-4 w-full">
-    <div class="container mx-auto max-w-6xl">
-      <h2
-        class="mx-auto text-4xl md:text-8xl font-serif font-light my-12 tracking-wide text-center w-max"
-      >
-        Secretariat Team
-        <div class="border-t-3 border-mist-500/80 mt-1"></div>
-      </h2>
-      {
-        secTeam.map((member, index) => (
-          <SecProfile
-            name={member.name}
-            position={member.pos}
-            email={member.mail}
-            imageSrc={member.image}
-            imageRight={index % 2 !== 0}
-          />
-        ))
-      }
-    </div>
-    <div
-      class="container mx-auto border-t-3 border-white/10 mt-12 mb:mt-32 mb-8"
-    >
-    </div>
-
-    <div class="container mx-auto max-w-8xl">
-      <h2
-        class="mx-auto text-4xl md:text-8xl font-serif font-light my-12 tracking-wide text-center w-max"
-      >
-        General Assembly 1
-        <div class="border-t-3 border-mist-500/80 mt-1"></div>
-      </h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-2 max-w-8xl mx-auto px-4">
-        {
-          GA1Team.map((member) => (
-            <GAProfile
-              name={member.name}
-              position={member.pos}
-              email={member.mail}
-              imageSrc={member.image}
-            />
-          ))
-        }
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-x-4 max-w-7xl mx-auto">
+      <div class="mx-auto max-w-6xl pt-8 pl-4 pb-4">
+        <h1 class="text-2xl font-light text-white pb-2">From Death (1963)</h1>
+        <p class="text-base font-extralight text-gray-300 tracking-wide">
+          I have never feared death<br />
+          Even though<br />
+          Its hands were more fragile<br />
+          Than banality.<br />
+          <br />
+          I dread, however, to die<br />
+          In a land where<br />
+          The grave digger's wages<br />
+          Exceed the price of human freedom.<br />
+          <br />
+          Looking for,<br />
+          Discovering,<br />
+          Choosing freely,<br />
+          And transforming one's essence<br />
+          Into a fortress.<br />
+          <br />
+          If the price of death is higher than all that,<br />
+          I deny, in absolute terms,<br />
+          To have ever feared death.<br />
+          <br />
+        </p>
+        <p
+          class="text-base text-right font-extralight text-gray-300 tracking-wide"
+        >
+          - Ahmad Shamlou &emsp;
+        </p>
+      </div>
+      <div class="col-span-2 p-2 md:p-6 max-w-3xl mx-auto">
+        <Image src={girl} alt="girl running" class="rounded-2xl w-full" />
+        <p
+          class="text-sm text-gray-300 pt-4 max-w-xl text-center md:text-right mx-auto md:mx-0 md:ml-auto md:mr-4"
+        >
+          A girl with a national flag runs in front of the local Palace of
+          Culture destroyed by a Russian military strike, in the town of
+          Derhachi, Kharkiv region, Derhachi, Ukraine.
+        </p>
+        <p
+          class="text-sm font-light text-gray-400 text-center md:text-right mr-4"
+        >
+          June 17, 2023. REUTERS/Sofiia Gatilova
+        </p>
       </div>
     </div>
     <div
-      class="container mx-auto border-t-3 border-white/10 mt-12 mb:mt-32 mb-16"
+      class="p-2 md:p-6 max-w-5xl mx-auto pt-8 border-t border-white/5 mt-16"
     >
+      <Image src={paris} alt="paris" class="rounded-2xl mt-5" />
+      <p class="text-sm text-gray-300 pt-4 max-w-xl text-center mx-auto">
+        The Eiffel Tower is lit up in the national blue-and-yellow colours of
+        Ukraine, to mark the first anniversary of Russia's invasion of Ukraine,
+        in Paris, France.
+      </p>
+      <p class="text-sm font-light text-gray-400 text-center">
+        February 23, 2023. REUTERS/Sarah Meyssonnier
+      </p>
     </div>
 
-    <div class="container mx-auto max-w-8xl">
-      <h2
-        class="mx-auto text-4xl md:text-8xl font-serif font-light my-12 tracking-wide text-center w-max"
-      >
-        General Assembly 2
-        <div class="border-t-3 border-mist-500/80 mt-1"></div>
-      </h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-2 max-w-8xl mx-auto px-4">
-        {
-          GA2Team.map((member) => (
-            <GAProfile
-              name={member.name}
-              position={member.pos}
-              email={member.mail}
-              imageSrc={member.image}
-            />
-          ))
-        }
-      </div>
-    </div>
     <div
-      class="container mx-auto border-t-3 border-white/10 mt-12 mb:mt-32 mb-16"
+      class="max-w-4xl mx-auto py-24 px-6 text-center border-t border-white/5 mt-16"
     >
-    </div>
-    <div class="container mx-auto max-w-6xl">
-      <h1
-        class="mx-auto text-4xl md:text-8xl font-serif font-light my-12 tracking-wide text-center w-max"
+      <p
+        class="text-xl md:text-2xl font-extralight text-white leading-relaxed tracking-wide italic"
       >
-        Committees
-        <div class="border-t-3 border-mist-500/80 mt-1"></div>
-      </h1>
-      <h2
-        class="mx-auto text-3xl md:text-5xl font-serif font-light mt-12 tracking-wide text-center w-max"
+        "Let us not seek the Republican answer or the Democratic answer, but the
+        right answer. Let us not seek to fix the blame for the past. Let us
+        accept our own responsibility for the future."
+      </p>
+      <p
+        class="text-sm font-light text-gray-500 mt-6 tracking-[0.2em] uppercase"
       >
-        General Assembly 1
-        <div class="border-t-3 border-mist-500/80 mt-1"></div>
-      </h2>
-      <CommitteeSection committees={GA1Committees} />
-
-      <div class="container mx-auto border-t-3 border-white/10 mb-24 mt-8">
-      </div>
-      <h2
-        class="mx-auto text-3xl md:text-5xl font-serif font-light mt-12 tracking-wide text-center w-max"
-      >
-        General Assembly 2
-        <div class="border-t-3 border-mist-500/80 mt-1"></div>
-      </h2>
-      <CommitteeSection committees={GA2Committees} />
-      <div class="container mx-auto border-t-3 border-white/10 mb-24 mt-8">
-      </div>
-      <h2
-        class="mx-auto text-3xl md:text-5xl font-serif font-light mt-12 tracking-wide text-center w-max"
-      >
-        Special Committee
-        <div class="border-t-3 border-mist-500/80 mt-1"></div>
-      </h2>
-
-      <div
-        class="profile-tabs-wrapper max-w-5xl mx-auto p-6 mb-12"
-        data-component="profile-tabs"
-      >
-        <div class="grid grid-cols-1 mb-12">
-          <div
-            class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 items-center [grid-area:1/1]"
-          >
-            <div class="col-span-1 aspect-square">
-              <Image
-                src={ICJCommittee.photo}
-                alt={ICJCommittee.title}
-                class="w-full h-full object-contain"
-              />
-            </div>
-            <div class="col-span-2">
-              <h2 class="text-4xl md:text-6xl font-serif mb-2">
-                {ICJCommittee.title}
-              </h2>
-              <h4
-                class="text-xl md:text-2xl text-mist-400 font-sans tracking-widest uppercase mb-6"
-              >
-                {ICJCommittee.subHeading}
-              </h4>
-              <p
-                class="text-lg md:text-xl leading-relaxed text-white/80 font-light italic"
-              >
-                {ICJCommittee.description}
-              </p>
-              <a
-                href="https://docs.google.com/document/d/1aVXp6nIGTKQANGBsJUva6720eLMzuMxSI8lUUnpPhGo/edit?tab=t.0"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="flex group items-center opacity-0 animate-fade-in-up py-4 w-max"
-                style={`animation-delay: 0.05s;`}
-              >
-                <span
-                  class="relative flex items-center text-lg md:text-xl text-white/60 hover:text-white transition-colors duration-200 group-hover:text-text w-max"
-                >
-                  RoP for ICJ
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-4.5 w-4.5 ml-1"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"
-                    ></path>
-                    <path
-                      d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"
-                    ></path>
-                  </svg>
-                  <span
-                    class="absolute bottom-0.5 left-0 h-px w-0 bg-white/40 transition-all duration-300 ease-out group-hover:w-full"
-                  ></span>
-                </span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
+        — John F. Kennedy
+      </p>
     </div>
   </div>
 </Layout>
